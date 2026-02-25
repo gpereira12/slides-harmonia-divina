@@ -168,4 +168,4 @@ Certos momentos têm renderização especial:
 
 ## Licença
 
-Uso interno — Paróquia Harmonia Divina.
+Uso interno — Coral Harmonia Divina.
