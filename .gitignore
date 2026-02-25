@@ -1,0 +1,7 @@
+# Dados sensíveis
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo

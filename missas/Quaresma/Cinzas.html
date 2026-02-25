@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missa - Slides</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+
+    <style>
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-primary: #faf9f7;
+            --text-primary: #1a1a1a;
+            --text-secondary: #555555;
+            --accent-crimson: #c41e3a;
+
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Source Serif 4', serif;
+
+            /* Greatly increased sizes for church projector legibility (base ~42px desktop) */
+            --title-size: clamp(3.5rem, 8vw, 6.5rem);
+            --h2-size: clamp(2.5rem, 6vw, 4.5rem);
+            --body-size: clamp(2rem, 4vw, 3.5rem); /* ~42px to 56px */
+
+            --slide-padding: clamp(2rem, 5vw, 5rem);
+            --content-gap: clamp(1.5rem, 3vw, 2.5rem);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.35;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .slide.black-bg {
+            background-color: #000;
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-height: 100%;
+            overflow: hidden;
+            padding: var(--slide-padding);
+            
+            /* Max width constraints for precise readable blocks */
+            width: 100%;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .title-slide {
+            justify-content: center;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: var(--title-size);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .subtitle {
+            font-family: var(--font-body);
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+            color: var(--accent-crimson);
+            font-style: italic;
+            letter-spacing: 0.05em;
+            margin-top: 1rem;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-crimson);
+            margin: 1.5rem auto;
+            opacity: 0.7;
+        }
+
+        .lyric-stanza {
+            font-size: var(--body-size);
+            line-height: 1.35;
+            margin-bottom: var(--content-gap);
+            width: 100%;
+            white-space: pre-wrap;
+        }
+
+        .lyric-stanza:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .slide-content {
+                max-width: 600px;
+            }
+        }
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(1rem, 3vw, 2rem);
+                --content-gap: clamp(0.5rem, 2vw, 1.5rem);
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .slide.visible .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+    </style>
+<body>
+    <div id="presentation">
+
+        <!-- Main Title Slide -->
+        <section class="slide title-slide">
+            <div class="slide-content">
+                <h1 class="reveal">Cinzas</h1>
+                <div class="divider reveal delay-1"></div>
+            </div>
+        </section>
+
+        <section class="slide black-bg" id="slide-1"></section>
+    
+            <section class="slide title-slide" id="slide-2">
+                <div class="slide-content">
+                    <h1 class="reveal">Entrada</h1>
+                </div>
+            </section>
+        
+        <section class="slide" id="slide-3">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1">Miserere mei, Domine. Miserere mei, Domine.</p>
+            </div>
+        </section>
+            
+        <section class="slide" id="slide-4">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1">Piedade de mim, ó meu Deus, misericórdia. Na imensidão do amor, purificai-me. Lavai-me todo inteiro do pecado, apagai totalmente minha culpa.</p>
+            </div>
+        </section>
+            
+        <section class="slide" id="slide-5">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1">Eu reconheço toda a minha iniquidade, o meu pecado está sempre à minha frente. Foi contra vós somente que eu pequei e pratiquei o que é mau aos vossos olhos.</p>
+            </div>
+        </section>
+            
+        <section class="slide" id="slide-6">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1">Criai em mim um coração que seja puro, dai-me de novo um espírito firme. Meu sacrifício é minha alma penitente, não desprezeis um coração arrependido.</p>
+            </div>
+        </section>
+            
+        <section class="slide black-bg" id="slide-7"></section>
+    
+            <section class="slide title-slide" id="slide-8">
+                <div class="slide-content">
+                    <h1 class="reveal">Aleluia</h1>
+                </div>
+            </section>
+        
+                <section class="slide" id="slide-9">
+                    <div class="slide-content">
+                        <p class="lyric-stanza reveal delay-1"><strong>Glória e louvor a vós, ó Cristo…<br>Glória e louvor a vós, ó Cristo…</strong></p>
+                    </div>
+                </section>
+                
+        <section class="slide black-bg" id="slide-10"></section>
+    
+            <section class="slide title-slide" id="slide-11">
+                <div class="slide-content">
+                    <h1 class="reveal">Cinzas</h1>
+                </div>
+            </section>
+        
+        <section class="slide" id="slide-12">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Recorda-te de mim, ó Senhor<br>Recorda-te de mim no teu Reino,<br>no seu reino de paz infinita,<br>recorda-te Jesus de mim…</strong></p>
+            </div>
+        </section>
+            
+        <section class="slide" id="slide-13">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1">1. Em verdade eu digo…<br>hoje estará comigo<br>porque vim buscar o que estava<br>o que estava perdido.<br>2. É alegria no meu reino<br>festejar junto as minhas<br>junto as minhas ovelhas perdidas<br>que foram encontradas.<br>3. Feliz o que confia<br>no amor do Senhor<br>porque é eterno e grande<br>a sua misericórdia...</p>
+            </div>
+        </section>
+                
+        <section class="slide" id="slide-14">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Recorda-te de mim, ó Senhor<br>Recorda-te de mim no teu Reino,<br>no seu reino de paz infinita,<br>recorda-te Jesus de mim…</strong></p>
+            </div>
+        </section>
+                
+        <section class="slide black-bg" id="slide-15"></section>
+    
+            <section class="slide title-slide" id="slide-16">
+                <div class="slide-content">
+                    <h1 class="reveal">Cinzas</h1>
+                </div>
+            </section>
+        
+        <section class="slide" id="slide-17">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Nos rios da Babilônia estamos chorando ao recordar de Sião, ao recordar de Sião.</strong></p>
+            </div>
+        </section>
+            
+        <section class="slide" id="slide-18">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1">1. Ao sair daquela terra, ao sair penduramos nossas cítaras. Lá nos pediram canções aqueles que nos deportaram, canções de alegria nos exigiram. Cantai o canto de Sião... Como cantarei o canto do Senhor em terra estrangeira?</p>
+            </div>
+        </section>
+                
+        <section class="slide" id="slide-19">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Nos rios da Babilônia estamos chorando ao recordar de Sião, ao recordar de Sião.</strong></p>
+            </div>
+        </section>
+                
+        <section class="slide" id="slide-20">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1">2. Se esquecer minha terra, Jerusalém, cidade santa! Se te esqueço Jerusalém, se paralise minha destra, minha língua se ate ao céu da boca, se a tua memória eu perder... se não colocá-la, Jerusalém, acima de toda alegria.</p>
+            </div>
+        </section>
+                
+        <section class="slide" id="slide-21">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Nos rios da Babilônia estamos chorando ao recordar de Sião, ao recordar de Sião.</strong></p>
+            </div>
+        </section>
+                
+        <section class="slide black-bg" id="slide-22"></section>
+    
+            <section class="slide title-slide" id="slide-23">
+                <div class="slide-content">
+                    <h1 class="reveal">Ofertório</h1>
+                </div>
+            </section>
+        
+        <section class="slide" id="slide-24">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Pai, eu pequei contra o céu e contra ti, não sou digno de ser seu filho. Pai, piedade, piedade de mim. Pai, piedade, piedade de mim.</strong></p>
+            </div>
+        </section>
+            
+        <section class="slide" id="slide-25">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1">1. Seu pai o viu quando ainda estava longe, ao vê-lo seu coração tremeu, então correu ao seu encontro, jogou-se em seu colo e o abraçou.<br>2. O pai disse ao servo: tragam-me depressa, tragam aqui a veste mais bela, coloquem no dedo um anel, tragam calçados para ele.<br>3. Preparai logo um bezerro grande, vamos comer e fazer uma festa, meu filho que estava morto agora vive, estava perdido e está aqui.</p>
+            </div>
+        </section>
+                
+        <section class="slide" id="slide-26">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Pai, eu pequei contra o céu e contra ti, não sou digno de ser seu filho. Pai, piedade, piedade de mim. Pai, piedade, piedade de mim.</strong></p>
+            </div>
+        </section>
+                
+        <section class="slide black-bg" id="slide-27"></section>
+    
+            <section class="slide title-slide" id="slide-28">
+                <div class="slide-content">
+                    <h1 class="reveal">Santo</h1>
+                </div>
+            </section>
+        
+                <section class="slide" id="slide-29">
+                    <div class="slide-content">
+                        <p class="lyric-stanza reveal delay-1"><strong>Santo, Santo, Santo / é o Senhor Deus do universo<br>Santo, Santo, Santo / é o Senhor Deus do universo</strong></p>
+                    </div>
+                </section>
+                
+                    <section class="slide" id="slide-30">
+                        <div class="slide-content">
+                            <p class="lyric-stanza reveal delay-1">O céu e a terra / proclamam a vossa glória<br>Hosana, Hosana nas alturas</p>
+                        </div>
+                    </section>
+                    
+                <section class="slide" id="slide-31">
+                    <div class="slide-content">
+                        <p class="lyric-stanza reveal delay-1"><strong>Hosana, Hosana nas alturas</strong></p>
+                    </div>
+                </section>
+                
+                    <section class="slide" id="slide-32">
+                        <div class="slide-content">
+                            <p class="lyric-stanza reveal delay-1">Bendito o que vem / em nome do Senhor<br>Hosana, Hosana nas alturas</p>
+                        </div>
+                    </section>
+                    
+                <section class="slide" id="slide-33">
+                    <div class="slide-content">
+                        <p class="lyric-stanza reveal delay-1"><strong>Hosana, Hosana nas alturas</strong></p>
+                    </div>
+                </section>
+                
+        <section class="slide black-bg" id="slide-34"></section>
+    
+            <section class="slide title-slide" id="slide-35">
+                <div class="slide-content">
+                    <h1 class="reveal">Cordeiro</h1>
+                </div>
+            </section>
+        
+                    <section class="slide" id="slide-36">
+                        <div class="slide-content">
+                            <p class="lyric-stanza reveal delay-1">Cordeiro de Deus, que tirais o pecado do mundo</p>
+                        </div>
+                    </section>
+                    
+                <section class="slide" id="slide-37">
+                    <div class="slide-content">
+                        <p class="lyric-stanza reveal delay-1"><strong>Tende piedade, piedade de nós.</strong></p>
+                    </div>
+                </section>
+                
+                    <section class="slide" id="slide-38">
+                        <div class="slide-content">
+                            <p class="lyric-stanza reveal delay-1">Cordeiro de Deus, que tirais o peca.do do mundo</p>
+                        </div>
+                    </section>
+                    
+                <section class="slide" id="slide-39">
+                    <div class="slide-content">
+                        <p class="lyric-stanza reveal delay-1"><strong>Tende piedade, piedade de nós.</strong></p>
+                    </div>
+                </section>
+                
+                    <section class="slide" id="slide-40">
+                        <div class="slide-content">
+                            <p class="lyric-stanza reveal delay-1">Cordeiro de Deus, que tirais. o pecado do mundo</p>
+                        </div>
+                    </section>
+                    
+                <section class="slide" id="slide-41">
+                    <div class="slide-content">
+                        <p class="lyric-stanza reveal delay-1"><strong>Dai-nos a paz, dai-nos a paz</strong></p>
+                    </div>
+                </section>
+                
+        <section class="slide black-bg" id="slide-42"></section>
+    
+            <section class="slide title-slide" id="slide-43">
+                <div class="slide-content">
+                    <h1 class="reveal">Comunhão</h1>
+                </div>
+            </section>
+        
+        <section class="slide" id="slide-44">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Feliz aquele a quem o Senhor perdoa o pecado, feliz aquele a quem o Senhor perdoa o pecado.</strong></p>
+            </div>
+        </section>
+            
+        <section class="slide" id="slide-45">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1">1. Feliz o homem limpo de toda culpa, no coração é apagado o pecado.<br>2. Eu revelei toda a minha culpa, iniquidade e pecado confesso.<br>3. És meu refúgio, me livra da angústia, me cerca de cantos de libertação.</p>
+            </div>
+        </section>
+                
+        <section class="slide" id="slide-46">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Feliz aquele a quem o Senhor perdoa o pecado, feliz aquele a quem o Senhor perdoa o pecado.</strong></p>
+            </div>
+        </section>
+                
+        <section class="slide black-bg" id="slide-47"></section>
+    
+            <section class="slide title-slide" id="slide-48">
+                <div class="slide-content">
+                    <h1 class="reveal">Final</h1>
+                </div>
+            </section>
+        
+        <section class="slide" id="slide-49">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Quando Israel saiu do Egito, a casa de Jacó era um povo bárbaro, Judá tornou-se o seu santuário, Israel seu domínio.</strong></p>
+            </div>
+        </section>
+            
+        <section class="slide" id="slide-50">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1">O mar viu e se retirou, o Jordão voltou atrás, os montes saltaram como carneiros, as colinas como um rebanho.</p>
+            </div>
+        </section>
+                
+        <section class="slide" id="slide-51">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Quando Israel saiu do Egito, a casa de Jacó era um povo bárbaro, Judá tornou-se o seu santuário, Israel seu domínio.</strong></p>
+            </div>
+        </section>
+                
+        <section class="slide" id="slide-52">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1">O que tem, mar, para fugir? E tu, Jordão, por que voltas? Por que vós, montes, saltam como um cordeiro no rebanho?</p>
+            </div>
+        </section>
+                
+        <section class="slide" id="slide-53">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Quando Israel saiu do Egito, a casa de Jacó era um povo bárbaro, Judá tornou-se o seu santuário, Israel seu domínio.</strong></p>
+            </div>
+        </section>
+                
+        <section class="slide" id="slide-54">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Trema, ó terra, diante do Senhor, diante do Deus de Jacó, que muda o abismo em lago, a rocha em fonte de água.</strong></p>
+            </div>
+        </section>
+                
+        <section class="slide" id="slide-55">
+            <div class="slide-content">
+                <p class="lyric-stanza reveal delay-1"><strong>Quando Israel saiu do Egito, a casa de Jacó era um povo bárbaro, Judá tornou-se o seu santuário, Israel seu domínio.</strong></p>
+            </div>
+        </section>
+                
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const slides = document.querySelectorAll('.slide');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { root: null, rootMargin: '0px', threshold: 0.5 });
+
+            slides.forEach(slide => observer.observe(slide));
+
+            document.addEventListener('keydown', (e) => {
+                let currentIndex = 0;
+                let maxVisibleArea = 0;
+                
+                slides.forEach((slide, index) => {
+                    const rect = slide.getBoundingClientRect();
+                    const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+                    if (visibleHeight > maxVisibleArea) {
+                        maxVisibleArea = visibleHeight;
+                        currentIndex = index;
+                    }
+                });
+
+                if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                    if (currentIndex < slides.length - 1) {
+                        e.preventDefault();
+                        slides[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+                    }
+                } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                    if (currentIndex > 0) {
+                        e.preventDefault();
+                        slides[currentIndex - 1].scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+            
+            document.body.addEventListener('click', (e) => {
+                if (e.target.classList.contains('dot')) return;
+                let currentIndex = 0;
+                let maxVisibleArea = 0;
+                slides.forEach((slide, index) => {
+                    const rect = slide.getBoundingClientRect();
+                    const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+                    if (visibleHeight > maxVisibleArea) {
+                        maxVisibleArea = visibleHeight;
+                        currentIndex = index;
+                    }
+                });
+                if (currentIndex < slides.length - 1) {
+                    slides[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
