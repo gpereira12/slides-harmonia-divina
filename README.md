@@ -10,7 +10,8 @@ Produz arquivos **HTML** (apresentação interativa no browser) e **PPTX** (Powe
 - [Pré-requisitos](#pré-requisitos)
 - [Instalação](#instalação)
 - [Configuração](#configuração)
-- [Como usar](#como-usar)
+- [🤖 Prompt para Agente de IA](#-prompt-para-agente-de-ia)
+- [Como usar (Python)](#como-usar)
 - [Estrutura de pastas](#estrutura-de-pastas)
 - [Estrutura do banco de dados no Notion](#estrutura-do-banco-de-dados-no-notion)
 - [Lógica de geração dos slides](#lógica-de-geração-dos-slides)
@@ -56,6 +57,26 @@ NOTION_DATABASE_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 > **Como obter o token:** Acesse [notion.so/my-integrations](https://www.notion.so/my-integrations), crie uma integração e copie o token.  
 > **Como obter o database ID:** Abra o banco de dados no Notion, copie a URL — o ID é o trecho entre `/` e `?` no final.
+
+---
+
+## 🤖 Prompt para Agente de IA
+
+Se você tiver um agente de IA configurado com as skills deste projeto, basta enviar:
+
+```
+Gere a Missa "Nome da Missa"
+```
+
+> ⚠️ O nome da Missa deve estar **entre aspas** e ser **exatamente igual** ao valor cadastrado no campo `Missa` do Notion.
+
+**Exemplos de prompts válidos:**
+```
+Gere a Missa "Quaresma I"
+Gere a Missa "Quaresma II"
+Gere a Missa "Cinzas"
+Gere a Missa "Comum I"
+```
 
 ---
 
@@ -166,50 +187,6 @@ Certos momentos têm renderização especial:
 
 ---
 
-## 🤖 Template de Prompt para Agentes de IA
-
-Se você usar um agente de IA para operar ou estender este projeto, use o seguinte prompt de contexto:
-
-````
-Você é um assistente técnico do projeto **Slides Harmonia Divina**, um gerador de slides litúrgicos para o Coral Harmonia Divina.
-
-## Contexto do Projeto
-- O script principal é `generate_slides.py`, que busca músicas do Notion e gera slides em HTML e PPTX.
-- As credenciais ficam no arquivo `.env` (NOTION_TOKEN e NOTION_DATABASE_ID).
-- Os arquivos gerados vão para a pasta `missas/<SubPasta>/`.
-
-## Como rodar
-```bash
-python3 generate_slides.py "Nome da Missa"
-```
-
-## Regras de negócio importantes
-- Texto em **negrito** no Notion = refrão (repetido após cada estrofe).
-- Texto normal = estrofe (cada parágrafo vira um slide separado).
-- Músicas sem letra traduzida são ignoradas automaticamente.
-- Momentos com "fora da liturgia" ou "Aspersão" são ignorados.
-- Prefixos numéricos no campo "Momento" são removidos (ex: "01. Entrada" → "Entrada").
-
-## Exceções litúrgicas
-| Momento | Regra |
-|---|---|
-| Ato Penitencial Fórmula 2 | Solo + resposta no mesmo slide |
-| Ato Penitencial Fórmula 3 | Sequencial, exatamente como no Notion |
-| Aclamação ao Evangelho / Aleluia | Apenas texto em negrito |
-| Santo | Sequencial sem repetição global do refrão |
-| Cordeiro de Deus | Sequencial (mesma regra do Santo) |
-
-## Organização de pastas
-- Missas do Tempo da Quaresma → `missas/Quaresma/`
-- Ao criar uma nova subpasta de missas, siga o padrão `missas/<NomeDoPeriodo>/`
-- O script já cria as pastas automaticamente se não existirem.
-
-Ao processar uma solicitação, sempre reprocesse todas as missas afetadas pela mudança e faça commit + push no repositório.
-````
-
----
-
 ## Licença
 
 Uso interno — Coral Harmonia Divina.
-
